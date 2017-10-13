@@ -24,6 +24,7 @@
 </div>
 <div class="post">
   <h3>{{ post.title }}</h3>
+  <div class="author"><button [disabled]="yaMeGusta(post.likes, user.id)"  (click)="sumarLike()" ><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{ post.likes | botonMeGusta:user.id}}</button></div>
   <img *ngIf="post.media" [src]="post.media" class="u-max-full-width">
   <div class="html-text" [innerHtml]="plainTextToHtml(post.intro)"></div>
   <hr>
@@ -38,6 +39,5 @@
   <app-category-box [categories]="post.categories" (botonCategoriaPulsado)="filtrarPorCategoria($event)" ></app-category-box>
 </div>
 <div>
- <button (click)="editarPost()" >Editar</button>
- <button>Eliminar</button>
+ <button *ngIf="post.author.id == user.id" (click)="editarPost()" >Editar</button>
 </div>

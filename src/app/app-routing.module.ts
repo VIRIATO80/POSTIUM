@@ -10,7 +10,7 @@ import { PostsByCategoryComponent } from './posts-by-category/posts-by-category.
 import { PostsByAuthorComponent } from './posts-by-author/posts-by-author.component';
 import { PostsViewComponent } from './posts-view/posts-view.component';
 import { UserDetailsResolveService } from "./user-details-resolve-service";
-import { MensajeErrorComponent } from "./mensaje-error/mensaje-error.component";
+
 
 @NgModule({
   imports: [
@@ -53,11 +53,7 @@ import { MensajeErrorComponent } from "./mensaje-error/mensaje-error.component";
     {
       path: 'new-story/:id',
       component: NewStoryComponent
-    },
-    {
-      path: 'error-auth',
-      component: MensajeErrorComponent
-    },    
+    },  
     {
       path: '**',
       redirectTo: '/posts'

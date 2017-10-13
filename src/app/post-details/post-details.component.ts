@@ -5,6 +5,7 @@ import { NativeWindow } from '../window';
 import { Post } from '../post';
 import { User } from '../user';
 import { Category } from '../category';
+import { PostService } from "../post.service";
 
 @Component({
   templateUrl: './post-details.component.html',
@@ -20,6 +21,7 @@ export class PostDetailsComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     @Inject(NativeWindow) private _window,
     private _router: Router,
+    private _postService: PostService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class PostDetailsComponent implements OnInit {
         });        
     
   }
+
 
   plainTextToHtml(text: string): string {
     return text ? `<p>${text.replace(/\n/gi, '</p><p>')}</p>` : '';
@@ -70,13 +73,34 @@ export class PostDetailsComponent implements OnInit {
   
   //Queremos editar un post
   editarPost(): void {
-    console.log(this.post.author);
-    console.log(this.user);
-    if(this.post.author.id != this.user.id){
-      this._router.navigate(['/error-auth']);
-    }else{
       this._router.navigate(['/new-story', this.post.id]);
-    }
   }
+
+  //Deshabilitamos el botón de Me Gusta si el usuario ya ha dado a me gusta
+  yaMeGusta(likes, userId): boolean{
+    let yaGusta = false;
+    if(likes){
+      likes.forEach((valor)=>{
+        if(valor == userId){
+          yaGusta = true;
+        }
+      });
+    }
+    return yaGusta;
+  }
+
+  //Sumamos un like al post
+  sumarLike(){
+    if(this.post.likes){
+      this.post.likes.push(this.user.id);
+    }else{
+      this.post.likes = [this.user.id];
+    }
+
+    this._postService.editPost(this.post).subscribe((postNew: Post) => {
+          this.post = postNew;
+    }); 
+  }
+
 
 }

@@ -34,7 +34,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { UserService } from './user.service';
 import { FromNowPipe } from './from-now.pipe';
 import { UserDetailsResolveService } from "./user-details-resolve-service";
-import { MensajeErrorComponent } from './mensaje-error/mensaje-error.component';
+import { BotonMeGustaPipe } from './boton-me-gusta.pipe';
 
 @NgModule({
   imports: [
@@ -66,7 +66,7 @@ import { MensajeErrorComponent } from './mensaje-error/mensaje-error.component';
     PostsViewComponent,
     SearchBoxComponent,
     FromNowPipe,
-    MensajeErrorComponent
+    BotonMeGustaPipe
   ],
   providers: [
     CategoryResolveService,
