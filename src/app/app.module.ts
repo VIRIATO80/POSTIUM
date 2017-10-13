@@ -35,6 +35,7 @@ import { UserService } from './user.service';
 import { FromNowPipe } from './from-now.pipe';
 import { UserDetailsResolveService } from "./user-details-resolve-service";
 import { BotonMeGustaPipe } from './boton-me-gusta.pipe';
+import { ResultadosBusquedaComponent } from './resultados-busqueda/resultados-busqueda.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { BotonMeGustaPipe } from './boton-me-gusta.pipe';
     PostsViewComponent,
     SearchBoxComponent,
     FromNowPipe,
-    BotonMeGustaPipe
+    BotonMeGustaPipe,
+    ResultadosBusquedaComponent
   ],
   providers: [
     CategoryResolveService,

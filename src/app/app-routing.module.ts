@@ -10,6 +10,7 @@ import { PostsByCategoryComponent } from './posts-by-category/posts-by-category.
 import { PostsByAuthorComponent } from './posts-by-author/posts-by-author.component';
 import { PostsViewComponent } from './posts-view/posts-view.component';
 import { UserDetailsResolveService } from "./user-details-resolve-service";
+import { ResultadosBusquedaComponent } from "./resultados-busqueda/resultados-busqueda.component";
 
 
 @NgModule({
@@ -39,7 +40,19 @@ import { UserDetailsResolveService } from "./user-details-resolve-service";
       data: {
         origen: 'byCategory'
       }
-    }, {
+    },
+    {
+      path: 'posts/resultadosBusqueda/:busqueda',
+      component: ResultadosBusquedaComponent,
+      resolve: {
+        posts: PostsResolveService,
+      },
+      data: {
+        origen: 'byTitle'
+      }
+    },            
+    
+    {
       path: 'new-story',
       component: NewStoryComponent
     }, {

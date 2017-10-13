@@ -133,6 +133,26 @@ export class PostService {
      });
   }
 
+/*Busca por título de un post*/
+
+getPostByTitle(text: string): Observable<Post[]> {
+    const filtro = {
+      params: new HttpParams()
+         //Ordenamos de las entradas más nuevas a las más antiguas. Tipo blog
+        .set('_sort', 'publicationDate')
+        .set('_order', 'DESC')
+         //Filtro para que la fecha de publicación sea menor a la de hoy
+        .set('publicationDate_lte', new Date().getTime().toString())
+        //Filtro para busqueda de literales en el título
+        .set('title_like', text)  
+    };
+  //Hacemos la búsqueda
+  return this._http.get<Post[]>(`${environment.backendUri}/posts`, filtro);
+}
+
+
+
+/*Obtiene el detalle de un post */
   getPostDetails(id: number): Observable<Post> {
     return this._http.get<Post>(`${environment.backendUri}/posts/${id}`);
   }

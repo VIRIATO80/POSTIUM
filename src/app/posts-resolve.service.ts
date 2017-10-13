@@ -37,6 +37,12 @@ export class PostsResolveService implements Resolve<Post[]> {
       return this._postService.getCategoryPosts(route.params.categoryId);
     }
 
+    /*
+      Búsqueda por aproximacion 
+    */
+    if(route.data.origen && route.data.origen == 'byTitle'){
+      return this._postService.getPostByTitle(route.params.busqueda);
+    }
 
     return this._postService.getPosts();
   }

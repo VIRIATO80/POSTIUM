@@ -39,9 +39,7 @@ export class SearchBoxComponent {
   }
 
   notifySearch(e: KeyboardEvent) {
-    if ((e.keyCode || e.which) === 13) {
-      this.onSearch.emit(((e.target || e.srcElement) as HTMLInputElement).value);
-    }
+    this.onSearch.emit(((e.target || e.srcElement) as HTMLInputElement).value);
   }
 
 }

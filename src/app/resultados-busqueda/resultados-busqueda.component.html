@@ -1,0 +1,8 @@
+<div class="posts-by-category">
+  <h3>Resultados de la búsqueda</h3>
+  <div *ngIf="posts.length == 0" >
+    <h4 >Sin coincidencias</h4>
+    <button  [routerLink]="['/']" >Aceptar</button>
+  </div>
+  <app-posts-list [posts]="posts"></app-posts-list>
+</div>
